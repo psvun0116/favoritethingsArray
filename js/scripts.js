@@ -2,22 +2,21 @@ var myArray = [];
 
 $(document).ready(function() {
   $("form#blanks").submit(function(event) {
-    event.preventDefault();
-    var drinkInput = $("#drink").val();
-    var hobbyInput = $("#hobby").val();
-    var movieInput = $("#movie").val();
-    var foodInput = $("#food").val();
-    var carInput = $("#car").val();
+    var blanks = ["drink", "hobby", "movie", "food", "car"];
+    var answers = [];
 
-    $(".drink").text(drinkInput);
-    $(".hobby").text(hobbyInput);
-    $(".movie").text(movieInput);
-    $(".food").text(foodInput);
-    $(".car").text(carInput);
-
-    myArray = [drinkInput, hobbyInput, movieInput, foodInput, carInput]
-    alert(myArray)
-
-
+    blanks.forEach(function(blank) {
+      var userInput = $("input#" + blank).val();
+      answers.push(userInput);
     });
+
+    alert(answers);
+
+      $("#result ul").append("<li>" + answers[1] + "</li>");
+      $("#result ul").append("<li>" + answers[0] + "</li>");
+      $("#result ul").append("<li>" + answers[2] + "</li>");
+      $("#result").show();
+
+    event.preventDefault();
   });
+});
